@@ -106,20 +106,21 @@ namespace Laboratorio_4_OOP_201902
         //Metodos
         public void DrawCard(int cardId = 0)
         {
-            Deck deck = new Deck();
             EnumType tipo = deck.Cards[cardId].Type;
             if (Convert.ToString(tipo) == "CombatCard")
             {
                 CombatCard combatCard = (CombatCard) deck.Cards[cardId];
-                hand.AddCard(combatCard);
-                deck.DestroyCard(cardId);
+                CombatCard nuevaCard = new CombatCard(combatCard.Name, combatCard.Type, combatCard.Effect, combatCard.AttackPoints, combatCard.Hero);
+                hand.AddCard(nuevaCard);
             }
             else
             {
                 SpecialCard specialCard =(SpecialCard) deck.Cards[cardId];
-                hand.AddCard(specialCard);
-                deck.DestroyCard(cardId);
+                SpecialCard nuevaCard = new SpecialCard(specialCard.Name, specialCard.Type, specialCard.Effect);
+                hand.AddCard(nuevaCard);
+
             }
+            deck.DestroyCard(cardId);
             /*
             1- Definir si la carta a robada del mazo es CombatCard o SpecialCard
             2- Luego deberá agregar la carta robada al mazo. En este paso debe respetar el tipo por referencia, para esto:
@@ -135,6 +136,7 @@ namespace Laboratorio_4_OOP_201902
             if (Convert.ToString(tipo1) == "CombatCard")
             {
                 CombatCard cards = (CombatCard) deck.Cards[cardId];
+                CombatCard card = new CombatCard(cards.Name, cards.Type, cards.Effect, cards.AttackPoints, cards.Hero);
                 board.AddCard(cards, id);
                 hand.DestroyCard(cardId);
 
