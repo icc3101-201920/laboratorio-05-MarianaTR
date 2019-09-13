@@ -128,7 +128,6 @@ namespace Laboratorio_4_OOP_201902
                 2.3- Agregue la nueva carta a la mano
             Elimine la carta del mazo.
             Hint: Utilice los métodos ya creados en Hand y Deck (AddCard y DestroyCard), no se preocupe de la implementacion de estos aun.*/
-            throw new NotImplementedException();
         }
         public void PlayCard(int cardId, EnumType buffRow = EnumType.None)
         {
@@ -205,10 +204,9 @@ namespace Laboratorio_4_OOP_201902
 
         public void FirstHand()
         {
-            List<Card> desorden = deck.Shuffle();
             for(int i = 0; i<10;i++)
             {
-                hand.AddCard(desorden[i]);
+                DrawCard(i);
             }
 
             
